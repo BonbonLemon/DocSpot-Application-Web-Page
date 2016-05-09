@@ -1,5 +1,6 @@
 var View = function () {
   this.setupGrid();
+  this.createRandomColors();
 };
 
 View.prototype.setupGrid = function () {
@@ -12,6 +13,14 @@ View.prototype.setupGrid = function () {
       ul.appendChild(li);
     }
   }
+};
+
+View.prototype.createRandomColors = function () {
+  var rowIdx = Math.floor(Math.random() * 4);
+  var colIdx = Math.floor(Math.random() * 4);
+
+  var randomSquare = document.querySelector('li[pos=\"' + rowIdx + ',' + colIdx + '\"]');
+  randomSquare.style.background = "yellow";
 };
 
 new View();
