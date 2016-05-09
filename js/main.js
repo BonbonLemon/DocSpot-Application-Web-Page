@@ -1,6 +1,9 @@
+var colors = ['darksalmon', 'cornflowerblue', 'red', 'yellow', 'wheat',
+  'hotpink', 'green', 'orange', 'purple', 'darkolivegreen', 'aqua'];
+
 var View = function () {
   this.setupGrid();
-  this.createRandomColors();
+  setInterval(this.createRandomColor, 250);
 };
 
 View.prototype.setupGrid = function () {
@@ -15,12 +18,14 @@ View.prototype.setupGrid = function () {
   }
 };
 
-View.prototype.createRandomColors = function () {
+View.prototype.createRandomColor = function () {
   var rowIdx = Math.floor(Math.random() * 4);
   var colIdx = Math.floor(Math.random() * 4);
 
-  var randomSquare = document.querySelector('li[pos=\"' + rowIdx + ',' + colIdx + '\"]');
-  randomSquare.style.background = "yellow";
+  var randomSquare = document.querySelector('li[pos=\"' + rowIdx
+                      + ',' + colIdx + '\"]');
+  var randomColor = colors[Math.floor(Math.random() * colors.length)];
+  randomSquare.style.background = randomColor;
 };
 
 new View();
